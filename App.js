@@ -1,50 +1,21 @@
-import { useState } from "react";
-import { Alert, ScrollView, Text, View } from "react-native";
-import styles from "./App.components.style";
-import Form from "./components/Form";
-import Task from "./components/Task";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Home from "./screens/Home";
+import TaskEdit from "./screens/TaskEdit";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [tasks, setTasks] = useState(["todo1", "todo2", "todo3"]);
-
-  const onAddTask = (task) => {
-    setTasks([...tasks, task]);
-  };
-
-  const onDeleteTask = (index) => {
-    Alert.alert("Are you sure?", "You won't be able to revert this!", [
-      {
-        text: "Cancel",
-        onPress: () => {},
-      },
-      {
-        text: "OK",
-        onPress: () => {
-          const tasksTemp = [...tasks];
-          tasksTemp.splice(index, 1);
-          setTasks(tasksTemp);
-        },
-      },
-    ]);
-  };
   return (
-    <View style={styles.container}>
-      <View style={styles.body}>
-        <Text style={styles.header}>Todolist</Text>
-
-        <ScrollView style={styles.items}>
-          {tasks.map((task, index) => (
-            <Task
-              key={index}
-              task={task}
-              number={index + 1}
-              onDeleteTask={() => onDeleteTask(index)}
-            />
-          ))}
-        </ScrollView>
-      </View>
-
-      <Form onAddTask={onAddTask} />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="TaskEdit"
+          component={TaskEdit}
+          options={({ route }) => ({ title: route.params.taskName })}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }

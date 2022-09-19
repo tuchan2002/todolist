@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 45,
-    width: "80%",
+    width: "75%",
     backgroundColor: color.white,
     borderRadius: 2,
     borderWidth: 1,
@@ -26,13 +26,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: color.secondary,
     height: 45,
-    paddingHorizontal: 10,
+    paddingHorizontal: 8,
     borderRadius: 2,
   },
   icon: {
     fontWeight: "bold",
     color: color.white,
-    fontSize: 18,
+    fontSize: 16,
   },
 });
 
