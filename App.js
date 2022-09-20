@@ -14,6 +14,7 @@ export default function App() {
           name="HomeStack"
           component={HomeStack}
           options={{
+            title: "Home",
             headerShown: false,
             tabBarIcon: ({ color }) => (
               <FontAwesome name="home" size={30} color={color} />

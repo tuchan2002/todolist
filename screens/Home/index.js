@@ -1,18 +1,40 @@
+import axios from "axios";
 import * as React from "react";
-import { useState } from "react";
-import { Alert, ScrollView, Text, View } from "react-native";
+import { useState, useEffect } from "react";
+import { Alert, FlatList, View } from "react-native";
 import Form from "../../components/Form";
 import Task from "../../components/Task";
 import styles from "./style";
+import uuid from "react-native-uuid";
 
 export default function Home() {
-  const [tasks, setTasks] = useState(["todo1", "todo2", "todo3"]);
+  const [tasks, setTasks] = useState([]);
 
-  const onAddTask = (task) => {
-    setTasks([...tasks, task]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/users/1/todos?_limit=5"
+        );
+        console.log(response.data);
+        setTasks(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const onAddTask = (title) => {
+    const newTask = {
+      id: uuid.v4(),
+      title,
+      completed: false,
+    };
+    setTasks([...tasks, newTask]);
   };
 
-  const onDeleteTask = (index) => {
+  const onDeleteTask = (taskId) => {
     Alert.alert("Are you sure?", "You won't be able to revert this!", [
       {
         text: "Cancel",
@@ -21,8 +43,7 @@ export default function Home() {
       {
         text: "OK",
         onPress: () => {
-          const tasksTemp = [...tasks];
-          tasksTemp.splice(index, 1);
+          const tasksTemp = tasks.filter((task) => task.id !== taskId);
           setTasks(tasksTemp);
         },
       },
@@ -30,16 +51,17 @@ export default function Home() {
   };
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.body}>
-        {tasks.map((task, index) => (
+      <FlatList
+        style={styles.body}
+        data={tasks}
+        renderItem={({ item }) => (
           <Task
-            key={index}
-            task={task}
-            number={index + 1}
-            onDeleteTask={() => onDeleteTask(index)}
+            key={item.id}
+            title={item.title}
+            onDeleteTask={() => onDeleteTask(item.id)}
           />
-        ))}
-      </ScrollView>
+        )}
+      />
 
       <Form onAddTask={onAddTask} />
     </View>

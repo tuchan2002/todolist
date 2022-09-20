@@ -7,19 +7,19 @@ import {
   Platform,
   Keyboard,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./style";
 
 const Form = ({ onAddTask }) => {
-  const [task, setTask] = useState("");
+  const [title, setTitle] = useState("");
 
   const hanldeSubmit = () => {
-    if (task.trim() === "") {
+    if (title.trim() === "") {
       alert("Please enter your task!");
       return;
     }
-    onAddTask(task);
-    setTask("");
+    onAddTask(title);
+    setTitle("");
     Keyboard.dismiss();
   };
   return (
@@ -30,8 +30,8 @@ const Form = ({ onAddTask }) => {
       <TextInput
         style={styles.input}
         placeholder="Your Task"
-        onChangeText={(text) => setTask(text)}
-        value={task}
+        onChangeText={(text) => setTitle(text)}
+        value={title}
       />
       <TouchableOpacity onPress={hanldeSubmit}>
         <View style={styles.iconWrapper}>

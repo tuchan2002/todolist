@@ -5,10 +5,10 @@ import { useRoute } from "@react-navigation/native";
 
 export default function TaskEdit() {
   const route = useRoute();
-  const { taskName } = route.params;
+  const { title } = route.params;
   return (
     <View style={styles.container}>
-      <Text>{taskName}</Text>
+      <Text>{title}</Text>
     </View>
   );
 }

@@ -6,37 +6,21 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: color.white,
     marginBottom: 16,
-    paddingHorizontal: 20,
-    paddingVertical: 12,
+    padding: 12,
     borderRadius: 2,
     alignItems: "center",
+    justifyContent: "space-between",
   },
-  square: {
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 4,
-  },
-  even: {
-    backgroundColor: color.primary,
-  },
-  odd: {
-    backgroundColor: color.green,
-  },
-  number: {
-    fontWeight: "bold",
-    color: color.white,
-  },
+  checkbox: {},
   content: {
-    marginLeft: 20,
     fontSize: 16,
   },
   iconWrapper: {
-    marginLeft: "auto",
+    marginLeft: 10,
   },
   icon: {
-    fontSize: 18,
+    fontSize: 25,
+    color: color.danger,
   },
 });
 
