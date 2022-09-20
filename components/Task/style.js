@@ -11,12 +11,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
-  checkbox: {},
   content: {
     fontSize: 16,
   },
   iconWrapper: {
-    marginLeft: 10,
+    marginLeft: "auto",
   },
   icon: {
     fontSize: 25,

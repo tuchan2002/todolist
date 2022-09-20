@@ -57,7 +57,7 @@ export default function Home() {
         renderItem={({ item }) => (
           <Task
             key={item.id}
-            title={item.title}
+            task={item}
             onDeleteTask={() => onDeleteTask(item.id)}
           />
         )}
