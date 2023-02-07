@@ -8,10 +8,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     justifyContent: "space-between",
     alignItems: "center",
+    gap: 16,
   },
   input: {
+    flexGrow: 1,
     height: 45,
-    width: "80%",
     backgroundColor: color.white,
     borderRadius: 2,
     borderWidth: 1,
