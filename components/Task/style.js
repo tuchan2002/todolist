@@ -11,12 +11,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
+  contentWrapper: { flexGrow: 1, width: "75%" },
   content: {
     fontSize: 16,
   },
-  iconWrapper: {
-    marginLeft: "auto",
-  },
+  iconWrapper: {},
   icon: {
     fontSize: 25,
     color: color.danger,

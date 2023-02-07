@@ -19,7 +19,7 @@ const Task = ({ task, onDeleteTask }) => {
     >
       <View style={styles.item}>
         <BouncyCheckbox isChecked={task.completed} />
-        <View>
+        <View style={styles.contentWrapper}>
           <Text style={styles.content}>{task.title}</Text>
         </View>
         <TouchableOpacity style={styles.iconWrapper} onPress={onDeleteTask}>
