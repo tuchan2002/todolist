@@ -14,7 +14,7 @@ export default function HomeStack() {
       <Stack.Screen
         name="TaskEdit"
         component={TaskEdit}
-        options={({ route }) => ({ title: route.params.taskName })}
+        options={({ route }) => ({ title: route.params.title })}
       />
     </Stack.Navigator>
   );
